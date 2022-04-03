@@ -3,6 +3,8 @@
 var currentDay = moment().format('MMMM Do, YYYY')
 //current time to assess current hour for for loop below
 var currentTime = moment().hour()
+//starting div for for loop
+var rowNumberStart = 9;
 
 
 //current date displayed at top of page
@@ -31,24 +33,12 @@ $("#17 .description").val(localStorage.getItem("17"));
 
 
 
-    // $(".time-block").each(function() {
-    
-    //     var hourParse = parseInt($(".hour").innerText)
-    //     console.log(hourParse)
-      
-    // })
-  
-
-var timeBlock = $('.time-block');
-var counter = 9;
-
-// display different color in description box depending on time
-for (var i = 0; i < timeBlock.length; i++) {
+// display different color in description boxes depending on time
+for (var i = 0; i < 9; i++) {
     //select the current timeBlock based on hour, starting at 9
-    var currentBlock = $('#' + counter);
-    //get id and turn it into an integer
+    var currentBlock = $('#' + rowNumberStart);
+    //get id
     var idHour = $('.time-block')[i].id;
-    parseInt(idHour);
     // check each id to see if it is past present or future
     if (idHour < currentTime) {
         currentBlock.addClass("past");
@@ -58,6 +48,6 @@ for (var i = 0; i < timeBlock.length; i++) {
         currentBlock.addClass("future");
     }
     //increase counter to select next time block
-    counter ++;
+    rowNumberStart ++;
 }
 
